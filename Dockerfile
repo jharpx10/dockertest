@@ -1,12 +1,19 @@
-#partir de una imagen
+# PARTIR DE UNA IMAGEN
 FROM node:14
-#añadir package.json y package-lock.json
-ADD package.json package-lock.json
-# instalar dependencias
+
+#ESPACIO DE TRABAJO
+WORKDIR /dockertest
+
+#AÑADIR PACKAGE
+ADD package.json package-lock.json  /dockertest/
+
+# INSTALAR DEPENDENCIAS
 RUN npm install
-# Copiar el código
-ADD .
-# Expose
+
+#COPIAR EL CODIGO
+ADD . /dockertest
+
+#EXPOSE
 EXPOSE 5000
-# Correr el contenedor
+#CORRER EL CONTENEDOR
 CMD ['node', 'app.js']
